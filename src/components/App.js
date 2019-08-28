@@ -27,11 +27,11 @@ class App extends Component {
 					dataIndex: 'destinationName',
 					key: 'destinationName'
 				},
-				{
-					title: 'Mode',
-					dataIndex: 'modeName',
-					key: 'modeName'
-				},
+				// {
+				// 	title: 'Mode',
+				// 	dataIndex: 'modeName',
+				// 	key: 'modeName'
+				// },
 				{
 					title: 'Station Name',
 					dataIndex: 'stationName',
@@ -46,6 +46,11 @@ class App extends Component {
 					title: 'Expected Departure',
 					dataIndex: 'timeToLive',
 					key: 'timeToLive'
+				},
+				{
+					title: 'Time to Stn.',
+					dataIndex: 'timeToStation',
+					key: 'timeToStation'
 				}
 			]
 	    }
@@ -53,7 +58,10 @@ class App extends Component {
 
 	componentDidMount() {
 		this.getGeoLocation();
-		this.fetchSchedule();
+		this.interval = setInterval(() => {
+			this.fetchSchedule();
+		}, 5000);
+		
 		// dispatch({ type: AGENT_LIST_FETCHED })
 	}
 
