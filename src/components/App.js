@@ -125,7 +125,7 @@ class App extends Component {
 	 				<h1>Geolocation: </h1>
 	 				{(this.state.geolocation && (
 						<div>
-							{this.state.geolocation.lat + ',  ' + this.state.geolocation.long}
+							{'Latitude: ' + this.state.geolocation.lat.toFixed(2) + ',  Longitude: ' + this.state.geolocation.long.toFixed(2)}
 						</div>
 						)
 					)}
