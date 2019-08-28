@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SheduleView from './SheduleView';
 
+import { Layout, Menu, Breadcrumb } from 'antd';
+
+const { Header, Content, Footer } = Layout;
 
 class App extends Component {
 	constructor(props) {
@@ -101,16 +104,38 @@ class App extends Component {
 
 	render () {
 		return (
-				<div>
-					<h1>Geolocation: </h1>
-					{(this.state.geolocation && (
+				<Layout>
+				    <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+				      <div className="logo" />
+				      <Menu
+				        theme="dark"
+				        mode="horizontal"
+				        defaultSelectedKeys={['1']}
+				        style={{ lineHeight: '64px' }}
+				      >
+				        <Menu.Item key="1">Schedule</Menu.Item>
+				      </Menu>
+				    </Header>
+				    <Content style={{ padding: '0 50px', marginTop: 64 }}>
+				      <Breadcrumb style={{ margin: '16px 0' }}>
+				        <Breadcrumb.Item>Transport Schedule</Breadcrumb.Item>
+				      </Breadcrumb>
+				      <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
+				      
+	 				<h1>Geolocation: </h1>
+	 				{(this.state.geolocation && (
 						<div>
-							{this.state.geolocation.lat + '  ' + this.state.geolocation.long}
+							{this.state.geolocation.lat + ',  ' + this.state.geolocation.long}
 						</div>
 						)
 					)}
 					<SheduleView columns={this.state.columns} schedule={this.state.schedule_data}/>
 				</div>
+				    </Content>
+				    <Footer style={{ textAlign: 'center' }}>
+				    	Data source: https://api.tfl.gov.uk
+				    </Footer>
+				</Layout>
 			)
 	}
 }
