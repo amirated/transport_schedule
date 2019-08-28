@@ -9,8 +9,6 @@ class SheduleView extends Component {
 	    this.state = {
 	      error: null,
 	      isLoaded: false,
-	      // dummy: [],
-	      // geolocation: null,
 	      schedule_data: {
 
 	      }
@@ -18,8 +16,7 @@ class SheduleView extends Component {
 	  }
 
 	componentDidMount() {
-		// this.getGeoLocation();
-		// this.fetchDummy();
+		
 		// dispatch({ type: AGENT_LIST_FETCHED })
 	}
 
@@ -33,5 +30,5 @@ class SheduleView extends Component {
 			)
 	}
 }
-// export default connect()(SheduleView);
+
 export default SheduleView;

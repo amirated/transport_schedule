@@ -10,45 +10,42 @@ class App extends Component {
 			isLoaded: false,
 			dummy: [],
 			geolocation: null,
-			schedule_data: [
-				{
-					key: '1',
-					name: 'John Brown',
-					age: 32,
-					address: 'New York No. 1 Lake Park',
-					tags: ['nice', 'developer'],
-				},
-				{
-					key: '2',
-					name: 'Jim Green',
-					age: 42,
-					address: 'London No. 1 Lake Park',
-					tags: ['loser'],
-				},
-				{
-					key: '3',
-					name: 'Joe Black',
-					age: 32,
-					address: 'Sidney No. 1 Lake Park',
-					tags: ['cool', 'teacher'],
-				},
-			],
+			schedule_data: [],
 			columns: [
 				{
-				    title: 'Name',
-				    dataIndex: 'name',
-				    key: 'name',
-				    render: text => <a>{text}</a>,
+					id: 'ID',
+					dataIndex: 'vehicleId',
+					key: 'vehicleId'
 				},
 				{
-				    title: 'Age',
-				    dataIndex: 'age',
-				    key: 'age',
+					title: 'Line ID',
+					dataIndex: 'lineId',
+					key: 'lineId'
 				},
 				{
-				    title: 'Address',
-				    dataIndex: 'address',
-				    key: 'address',
+					title: 'Destination',
+					dataIndex: 'destinationName',
+					key: 'destinationName'
+				},
+				{
+					title: 'Mode',
+					dataIndex: 'modeName',
+					key: 'modeName'
+				},
+				{
+					title: 'Station Name',
+					dataIndex: 'stationName',
+					key: 'stationName'
+				},
+				{
+					title: 'Expected Arrival',
+					dataIndex: 'expectedArrival',
+					key: 'expectedArrival'
+				},
+				{
+					title: 'Expected Departure',
+					dataIndex: 'timeToLive',
+					key: 'timeToLive'
 				}
 			]
 	    }
@@ -76,13 +73,13 @@ class App extends Component {
 	}
 
 	fetchSchedule() {
-	    fetch("https://api.tfl.gov.uk/Line/Bakerloo/Timetable/9400ZZLUBST/to/9400ZZLUBST")
+		fetch("https://api.tfl.gov.uk/StopPoint/490005183E/arrivals")
 			.then(res => res.json())
 			.then(
 				(result) => {
 					this.setState({
 						isLoaded: true,
-						schedule: result
+						schedule_data: result
 					});
 				},
 				(error) => {
